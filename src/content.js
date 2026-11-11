@@ -8,146 +8,117 @@ export const site = {
   email: 'mailto:[your-email]',
   linkedin: '[https://www.linkedin.com/in/your-profile]',
   nav: [
-    { label: 'Case studies', href: '#work' },
-    { label: 'Skills', href: '#skills' },
-    { label: 'About', href: '#about' },
-    { label: 'Experience', href: '#experience' },
+    { label: '01 Plans', href: '#plans' },
+    { label: '02 Materials', href: '#materials' },
+    { label: '03 Sequence', href: '#sequence' },
   ],
 }
 
 export const hero = {
-  availability: 'Open to remote roles · US',
-  eyebrow: 'Technical Account Manager · Solutions',
-  headline:
-    'I help enterprise clients get real results from complex ad tech, and make the technical side make sense.',
+  drawingNo: 'DWG. NO. TAM-01 / Technical Account Manager · Solutions',
+  headlineTop: 'Measured twice.',
+  headlineAccent: 'Built to last.',
+  span: 'From carpentry to client engineering · 2008 – 2026',
   intro:
-    "Technical Account Manager at Criteo, working on Performance Media and retargeting for major retail and travel brands. I've been a carpenter, a web developer and an integration engineer, and I bring all of it to client work.",
-  photo: null, // e.g. '/headshot.jpg' once you add a photo to /public
+    "I'm Rob Maskrey. I used to build houses; now I build client programs. As a Technical Account Manager at Criteo, I help major retail and travel brands get real results from Performance Media and retargeting, and I make the technical side make sense.",
+  titleBlock: [
+    { label: 'Name', value: 'Rob Maskrey' },
+    { label: 'Role', value: 'Technical Account Manager II' },
+    { label: 'Based', value: 'New York · Remote-ready' },
+  ],
+  status: '● Open to new roles',
 }
 
 export const stats = [
-  { value: '27', label: 'high-priority enterprise accounts in my book' },
-  { value: '~$75M', label: 'combined annual client spend' },
-  { value: '2018', label: 'in client-facing technical roles since' },
-  { value: '[#]', label: '[trainings led / new hires mentored]' },
+  { value: '27', label: 'Enterprise accounts in my book' },
+  { value: '$75M', label: 'Combined annual client spend' },
+  { value: '8 yrs', label: 'In client-facing tech roles' },
+  { value: '[#]', label: '[Trainings led / hires mentored]' },
 ]
 
-export const caseStudies = [
+export const plans = [
   {
-    tag: 'Account management · Enterprise retail and travel',
-    title: 'Running a $75M enterprise book across retail and travel',
-    problem: '[The challenge, e.g. a key account’s performance dropping before peak season.]',
-    action: '[How you diagnosed it, what you fixed, and who you brought together.]',
+    id: 'A-01',
+    category: 'Account management · Enterprise retail & travel',
+    title: 'Running a $75M enterprise book',
+    conditions: "[The challenge, e.g. a key account's performance dropping before peak season.]",
+    build: '[How you diagnosed it, what you fixed, who you brought together.]',
     results: [
-      { value: '[X%]', label: '[spend retained or grown]' },
-      { value: '[N days]', label: '[time to resolution]' },
+      { value: '[X%]', label: '[Spend retained / grown]' },
+      { value: '[N days]', label: '[Time to resolution]' },
     ],
     link: '#',
   },
   {
-    tag: 'Analytics engineering · Innovation & Expertise Team',
-    title: 'An Analytics Engineer rotation, Oct 2024 – Jul 2025',
-    problem: '[What the team needed and why it mattered.]',
-    action: '[The model, dashboard or pipeline you built.]',
+    id: 'A-02',
+    category: 'Analytics engineering · Oct 2024 – Jul 2025',
+    title: 'A rotation on the Innovation & Expertise Team',
+    conditions: '[What the team needed and why it mattered.]',
+    build: '[The model, dashboard or pipeline you built.]',
     results: [
-      { value: '[N]', label: '[teams or people using it]' },
-      { value: '[X hrs]', label: '[time saved per week]' },
+      { value: '[N]', label: '[Teams using it]' },
+      { value: '[X hrs]', label: '[Saved per week]' },
     ],
     link: '#',
   },
   {
-    tag: 'Automation · Internal',
-    title: 'An AI triage agent for unresolved client issues',
-    problem: '[Flags and tickets scattered across tools, slipping through.]',
-    action:
-      'Built a Glean-powered workflow that gathers open client flags and tickets into one view. [Add how the team uses it.]',
+    id: 'A-03',
+    category: 'Automation · Internal tooling',
+    title: 'An AI triage agent for client issues',
+    conditions: '[Flags and tickets scattered across tools, slipping through.]',
+    build: 'A Glean-powered workflow that gathers open client flags and tickets into one view.',
     results: [
-      { value: '[X hrs]', label: '[saved per week]' },
-      { value: '[X%]', label: '[faster response time]' },
+      { value: '[X hrs]', label: '[Saved per week]' },
+      { value: '[X%]', label: '[Faster response]' },
     ],
     link: '#',
   },
 ]
 
-export const skillGroups = [
+export const materials = [
   {
-    title: 'Technical',
-    blurb: 'Integration and full-stack background, so I can go deep with engineers.',
-    items: [
-      'APIs and Postman',
-      'Web development (HTML, CSS, JavaScript)',
-      'Client integrations',
-      'Analytics engineering',
-      'AI tools: Glean, Claude, Cursor, Copilot',
-      '[Add: SQL, Python, …]',
-    ],
+    id: 'M-01',
+    category: 'Technical',
+    spec: 'APIs and Postman · client integrations · web development (HTML, CSS, JavaScript, Vue) · analytics engineering · [SQL, Python, …]',
   },
   {
-    title: 'Customer',
-    blurb: 'I own the relationship long after launch and keep executives informed.',
-    items: [
-      'Enterprise account management',
-      'Executive presentations',
-      'Performance Media and retargeting',
-      '[Add: renewals, escalations, …]',
-    ],
+    id: 'M-02',
+    category: 'Customer',
+    spec: 'Enterprise account management · executive presentations · Performance Media and retargeting',
   },
-  {
-    title: 'Solutions and enablement',
-    blurb: 'I support pre-sales and make sure the team knows what I know.',
-    items: [
-      'Pre-sales support',
-      'Training across Operations',
-      'Mentoring new hires',
-      'Process automation',
-    ],
-  },
+  { id: 'M-03', category: 'Solutions', spec: 'Pre-sales support · solution scoping · process automation' },
+  { id: 'M-04', category: 'Enablement', spec: 'Training across Operations · mentoring new hires' },
+  { id: 'M-05', category: 'Tools', spec: 'Glean · Claude · Cursor · GitHub Copilot · Postman' },
 ]
 
-export const principles = [
-  { title: 'Translate the technical', text: 'Go deep with engineers, then explain it plainly to executives.' },
-  { title: 'Fix it once', text: 'When a problem repeats, I build the playbook or the tool so nobody solves it twice.' },
-  { title: 'Teach as I go', text: "I lead trainings and mentor new hires so knowledge doesn't sit with one person." },
-]
-
-export const about = {
-  title: 'From building houses to building client programs',
-  paragraphs: [
-    'I started out in environmental science and spent years running operations and doing carpentry: remodels, new construction, solving problems with my hands. In 2018 I finished a full-stack coding program and moved into tech as a web developer.',
-    "From there I became a Client Integration Engineer at CJ Affiliate, then joined Criteo in 2021. That path is why I'm comfortable in the details and with the people who depend on them.",
-    "[One or two lines about you outside work: family, what you're building at home, what you're curious about.]",
-  ],
-}
-
-export const experience = [
+export const sequence = [
   {
-    role: 'Technical Account Manager II · Criteo',
-    detail: 'Performance Media and retargeting for enterprise retail and travel. Includes an Analytics Engineer rotation.',
-    dates: '2021 – Present',
-  },
-  {
-    role: 'Client Integration Engineer · CJ Affiliate',
-    detail: 'Technical onboarding and integrations for advertiser clients.',
-    dates: '2018 – 2021',
-  },
-  {
-    role: 'Web Developer · Proud Development',
-    detail: 'Built and maintained client websites.',
-    dates: '2016 – 2018',
-  },
-  {
-    role: 'Earlier: operations, compliance and construction',
-    detail: 'Operations Manager, compliance and quality roles, and years of carpentry.',
     dates: '2008 – 2018',
+    title: 'Foundations',
+    text: 'Operations manager, compliance and quality roles, and years of carpentry. B.S. Environmental Science, 2011.',
   },
   {
-    role: 'Education',
-    detail: 'B.S. Environmental Science, East Stroudsburg University · Full Stack Web Development, Coding Temple',
-    dates: '2011 · 2018',
+    dates: '2016 – 2018',
+    title: 'Framing',
+    text: 'Web Developer at Proud Development. Full Stack certification, Coding Temple.',
   },
+  { dates: '2018 – 2021', title: 'Systems', text: 'Client Integration Engineer at CJ Affiliate.' },
+  {
+    dates: '2021 – Now',
+    title: 'Finish work',
+    text: 'Technical Account Manager II at Criteo, with an Analytics Engineer rotation.',
+  },
+]
+
+export const notes = [
+  { title: 'Translate the technical', text: 'Go deep with engineers, then explain it plainly to executives.' },
+  { title: 'Fix it once', text: 'When a problem repeats, build the tool so nobody solves it twice.' },
+  { title: 'Teach as I go', text: "Trainings and mentoring, so knowledge doesn't sit with one person." },
 ]
 
 export const contact = {
-  title: 'Looking for a Technical Account Manager?',
-  text: "I'm open to remote TAM and Solutions roles. I'd love to hear what your team is working on.",
+  eyebrow: '04 — Next project',
+  titleTop: "Let's build",
+  titleBottom: 'something.',
+  text: "Open to remote Technical Account Manager and Solutions roles. I'd love to hear what your team is working on.",
 }

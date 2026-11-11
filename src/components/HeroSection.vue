@@ -1,88 +1,73 @@
 <script setup>
 import { hero, site } from '../content.js'
+import DimensionLine from './DimensionLine.vue'
+import DrawnFrame from './DrawnFrame.vue'
 </script>
 
 <template>
-  <section id="top" class="container hero">
-    <div>
-      <p class="badge"><span class="dot" aria-hidden="true"></span>{{ hero.availability }}</p>
-      <p class="eyebrow">{{ hero.eyebrow }}</p>
-      <h1>{{ hero.headline }}</h1>
+  <section id="top" data-section="hero" class="container hero">
+    <p class="drawing-no mono">{{ hero.drawingNo }}</p>
+    <h1>
+      {{ hero.headlineTop }}<br />
+      <span class="accent">{{ hero.headlineAccent }}</span>
+    </h1>
+    <DimensionLine class="span-line" :label="hero.span" />
+
+    <div class="lower">
       <p class="intro">{{ hero.intro }}</p>
-      <div class="actions">
-        <a href="#work" class="btn btn-primary">See my case studies</a>
-        <a :href="site.resumeUrl" class="btn">Download resume (PDF)</a>
-      </div>
+      <DrawnFrame class="title-block mono">
+        <dl>
+          <div v-for="row in hero.titleBlock" :key="row.label" class="row">
+            <dt>{{ row.label }}</dt>
+            <dd>{{ row.value }}</dd>
+          </div>
+          <div class="row">
+            <dt>Status</dt>
+            <dd class="status">{{ hero.status }}</dd>
+          </div>
+        </dl>
+      </DrawnFrame>
     </div>
-    <div class="photo-card card">
-      <img v-if="hero.photo" :src="hero.photo" :alt="`Photo of ${site.name}`" />
-      <div v-else class="photo-placeholder" role="img" aria-label="Headshot placeholder">
-        Add your headshot to /public and set <code>hero.photo</code>
-      </div>
-      <div class="caption">
-        <strong>{{ site.name }}</strong>
-        <span>Technical Account Manager · New York</span>
-      </div>
+
+    <div class="actions">
+      <a href="#plans" class="btn btn-primary" data-track="hero_view_plans">View the plans →</a>
+      <a :href="site.resumeUrl" class="btn" data-track="hero_resume">Resume.pdf</a>
     </div>
   </section>
 </template>
 
 <style scoped>
-.hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  gap: 56px;
-  align-items: center;
-  padding-top: 88px;
-  padding-bottom: 72px;
-}
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin: 0 0 20px;
-  padding: 6px 14px;
-  border-radius: 999px;
-  background: #ecfdf5;
-  color: #065f46;
-  font-size: 14px;
-  font-weight: 600;
-}
-.dot { width: 8px; height: 8px; border-radius: 50%; background: #059669; }
+.hero { padding-top: 96px; padding-bottom: 88px; }
+.drawing-no { margin: 0 0 28px; font-size: 14px; letter-spacing: 0.12em; color: var(--muted); }
 h1 {
+  max-width: 1080px;
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 52px;
-  line-height: 1.08;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  font-size: clamp(52px, 8vw, 104px);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
 }
-.intro { margin: 24px 0 0; max-width: 600px; font-size: 19px; color: var(--text); }
-.actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
-.photo-card { padding: 18px; box-shadow: 0 12px 32px rgba(20, 33, 61, 0.08); }
-.photo-card img,
-.photo-placeholder {
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  border-radius: 10px;
-  object-fit: cover;
+.accent { color: var(--accent); }
+.span-line { max-width: 1080px; margin-top: 40px; }
+.lower {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 48px;
+  align-items: end;
+  margin-top: 48px;
 }
-.photo-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  text-align: center;
-  background: var(--accent-soft);
-  color: var(--muted);
-  font-size: 15px;
-}
-.caption { display: flex; flex-direction: column; padding: 16px 4px 2px; }
-.caption span { font-size: 15px; color: var(--muted); }
+.intro { margin: 0; max-width: 560px; font-size: 20px; }
+.title-block { background: var(--panel); font-size: 13px; }
+dl { margin: 0; }
+.row { display: grid; grid-template-columns: 110px minmax(0, 1fr); border-bottom: 1px solid var(--line); }
+.row:last-child { border-bottom: 0; }
+dt { padding: 10px 14px; color: var(--muted); border-right: 1px solid var(--line); }
+dd { margin: 0; padding: 10px 14px; color: var(--ink); }
+.status { color: var(--accent); font-weight: 600; }
+.actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 48px; }
 
-@media (max-width: 860px) {
-  .hero { grid-template-columns: 1fr; padding-top: 56px; }
-  h1 { font-size: 36px; }
-  .photo-card { max-width: 360px; }
+@media (max-width: 640px) {
+  .hero { padding-top: 56px; padding-bottom: 64px; }
+  .intro { font-size: 18px; }
 }
 </style>

@@ -1,16 +1,19 @@
 :root {
-  --accent: #0f766e;
-  --accent-dark: #115e59;
-  --accent-soft: #e6f4f1;
-  --ink: #14213d;
-  --text: #3f4a5c;
-  --muted: #4a5568;
-  --bg: #f7f7f4;
-  --surface: #ffffff;
-  --line: #e2e2dc;
-  --radius: 14px;
+  --bg: #0a2540;
+  --bg-deep: rgba(6, 26, 46, 0.6);
+  --panel: rgba(10, 37, 64, 0.92);
+  --line: rgba(173, 216, 255, 0.35);
+  --line-strong: rgba(173, 216, 255, 0.6);
+  --ink: #ffffff;
+  --text: #c9d9ea;
+  --muted: #9fc3e6;
+  --accent: #ff9f43;
+  --accent-light: #ffc48a;
   --font-body: 'Inter', system-ui, sans-serif;
   --font-display: 'Space Grotesk', 'Inter', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --draw-speed: 0.45s;
+  --draw-ease: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 * { box-sizing: border-box; }
@@ -19,73 +22,85 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: var(--bg);
-  color: var(--ink);
+  color: var(--text);
   font-family: var(--font-body);
   font-size: 17px;
   line-height: 1.6;
+  background-color: var(--bg);
+  /* Drafting grid: major lines every 120px, minor every 24px */
+  background-image:
+    linear-gradient(rgba(173, 216, 255, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(173, 216, 255, 0.09) 1px, transparent 1px),
+    linear-gradient(rgba(173, 216, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(173, 216, 255, 0.035) 1px, transparent 1px);
+  background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
 }
 
 a { color: var(--accent); }
-a:hover { color: var(--accent-dark); }
+a:hover { color: var(--accent-light); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
-h1, h2, h3 { margin: 0; }
+h1, h2, h3 { margin: 0; color: var(--ink); }
 
 .container {
-  max-width: 1120px;
+  max-width: 1200px;
   margin: 0 auto;
   padding-left: 32px;
   padding-right: 32px;
 }
 
-.section { padding-top: 96px; padding-bottom: 40px; }
+.section { padding-top: 112px; padding-bottom: 48px; }
+
+.mono {
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
 
 .eyebrow {
-  margin: 0 0 12px;
+  margin: 0 0 16px;
+  font-family: var(--font-mono);
   font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--accent);
 }
 
-.section-title {
+.display {
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 38px;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
-  margin-bottom: 40px;
+  font-weight: 700;
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 56px;
 }
 
 .btn {
   display: inline-block;
-  padding: 13px 25px;
-  border-radius: 8px;
-  border: 1px solid var(--ink);
-  color: var(--ink);
+  padding: 15px 27px;
+  border: 1px solid var(--text);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 15px;
   font-weight: 600;
-  font-size: 16px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   text-decoration: none;
+  transition: background 0.2s, color 0.2s;
 }
-.btn:hover { background: var(--ink); color: #fff; }
-.btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; }
-.btn-primary:hover { background: var(--accent-dark); border-color: var(--accent-dark); color: #fff; }
-
-.card {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-}
-
-.grid-auto {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 24px;
-}
+.btn:hover { background: var(--text); color: var(--bg); }
+.btn-primary { background: var(--accent); border-color: var(--accent); color: var(--bg); font-weight: 700; }
+.btn-primary:hover { background: var(--accent-light); border-color: var(--accent-light); color: var(--bg); }
 
 @media (max-width: 640px) {
   .container { padding-left: 20px; padding-right: 20px; }
-  .section { padding-top: 64px; }
-  .section-title { font-size: 30px; }
+  .section { padding-top: 80px; }
+  .display { margin-bottom: 40px; }
+}
+
+/* Anyone who has asked their device for less motion gets the finished drawing, no animation. */
+@media (prefers-reduced-motion: reduce) {
+  :root { --draw-speed: 0s; }
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: 0s !important; animation: none !important; }
 }

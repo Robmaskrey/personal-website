@@ -25,15 +25,32 @@ You shouldn't need to touch the components to update copy.
 ## Project layout
 
 ```
-index.html              page shell, fonts, title
-src/content.js          all site text
-src/style.css           colors, fonts, shared styles
-src/App.vue             section order
-src/components/         one component per section
-public/                 images, resume, favicon
+index.html                      page shell, fonts, title
+src/content.js                  all site text
+src/style.css                   colors, fonts, drafting grid, shared styles
+src/App.vue                     section order
+src/components/                 one component per section, plus:
+  DrawnFrame.vue                a box whose edges draw themselves in on scroll
+  DimensionLine.vue             a |<— label —>| line that draws outward on scroll
+  ConstructionSequence.vue      the timeline that fills as you scroll
+  TrackingInspector.vue         the "Inspect this page" event console
+src/directives/reveal.js        v-reveal: adds .is-drawn when an element scrolls into view
+src/composables/tracker.js      the local-only event tracker behind the inspector
+public/                         images, resume, favicon
 ```
 
 To reorder or remove a section, edit `src/App.vue`.
+
+## Motion and the tracking inspector
+
+- **Line drawing:** wrap anything in `<DrawnFrame>` or drop in a `<DimensionLine>` and it animates in
+  when scrolled into view. Speed is `--draw-speed` in `src/style.css`.
+- **Reduced motion:** visitors who have "reduce motion" turned on see every line already drawn
+  and no animation.
+- **Tracking inspector:** records `page_view`, `section_view`, `scroll_depth`, `cta_click`,
+  `engaged_time` and `inspector_open`. Add `data-track="some_name"` to any link or button to log
+  clicks on it, and `data-section="name"` to a section to log when it's viewed.
+  **Nothing is sent anywhere** — events stay in the visitor's browser memory and clear on reload.
 
 ## Build and deploy
 

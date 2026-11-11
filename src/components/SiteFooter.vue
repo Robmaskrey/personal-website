@@ -6,9 +6,9 @@ const year = new Date().getFullYear()
 
 <template>
   <footer>
-    <div class="container inner">
+    <div class="container inner mono">
       <span>© {{ year }} {{ site.name }}</span>
-      <span>{{ site.domain }}</span>
+      <span>Drawn by hand · Built with Vue</span>
     </div>
   </footer>
 </template>
@@ -20,9 +20,9 @@ footer { border-top: 1px solid var(--line); }
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 12px;
-  padding-top: 28px;
-  padding-bottom: 28px;
-  font-size: 14px;
+  padding-top: 24px;
+  padding-bottom: 88px; /* room for the inspector button */
+  font-size: 13px;
   color: var(--muted);
 }
 </style>
